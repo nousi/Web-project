@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="Style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="topofpage">
+    <img src="logo.PNG" alt="Fluingo Website Logo" class="logo">
+    
+</div>
+<div class="cont">
+    <h2 class="signTitle">Sign up</h2>
+    <div class="content-container">
+        <div class="contentedit">
+            <form action="#">
+                <label for="fname" >First Name:</label>
+                <input type="text" id="fname" name="firstname" placeholder="Enter your first name" required>
+
+                <label for="lname">Last Name:</label>
+                <input type="text" id="lname" name="lastname" placeholder="Enter your last name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter a password" required>
+
+                <label for="confirm_password">Confirm Password:</label>
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm your password" required>
+
+                <label for="photo">Upload a Photo:(Optional)</label>
+                <input type="file" id="photo" name="photo" accept="image/*">
+
+                <label>
+                    <input type="checkbox" name="terms" required> I agree to Terms & Conditions
+                </label>
+
+                <div class="clearfix">
+                  <button type="submit" class="signupbtn">Sign Up</button>
+                  <button type="button" class="cancelbtn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+  <div class="signin-link">
+      Already have an account? <a href="#">Sign in</a>
+  </div>
+
+    <div class="footer-links">
+        <a href="PrivacyPolicy.html">Privacy Policy</a>
+        <a href="TermsAndConditions.html">Terms & Conditions</a>
+        <a href="ContactUs.html">Contact Us</a>
+    </div>
+  </body>
+</html>
