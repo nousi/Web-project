@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="Style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="topofpage">
+        <img src="logo.png" alt="Fluingo Website Logo" class="logo">
+    </div>
+    <div class="cont">
+        <h2 class="signTitle">Sign up</h2>
+        <form action="#">
+            <label for="fname">First Name:</label>
+            <input type="text" id="fname" name="firstname" placeholder="Enter your first name" required>
+
+            <label for="lname">Last Name:</label>
+            <input type="text" id="lname" name="lastname" placeholder="Enter your last name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="gender">Gender:</label>
+            <div class="radio-buttons">
+                <label><input type="radio" name="gender" value="male"> Male</label>
+                <label><input type="radio" name="gender" value="female"> Female</label>
+            </div>
+            
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" min="18" max="80" placeholder="Select" required>
+      
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter a password" required>
+
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm your password" required>
+
+            <label for="photo">Upload a Photo:(Optional)</label>
+            <input type="file" id="photo" name="photo" accept="image/*">
+
+            <label for="phone"> Phone Number:</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" placeholder="Enter your phone number">
+
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" placeholder="City" required>
+
+            <label for="bio">Bio:</label>
+            <textarea name="bio" id="Bio" rows="5" placeholder="Tell us about yourself: languages spoken, cultural knowledge, etc"></textarea>
+
+            <label>
+                <input type="checkbox" unchecked="unchecked" name="terms"> I agree to Terms & Conditions
+            </label>
+
+            <div class="clearfix">
+                <button type="submit" class="signupbtn">Sign Up</button>
+                <button type="button" class="cancelbtn">Cancel</button>
+            </div>
+            </div>
+        </form>
+    </div>
+    <div class="signin-link">
+        Already have an account? <a href="#">Sign in</a>
+    </div>
+    
+    <div class="footer-links">
+        <a href="PrivacyPolicy.html">Privacy Policy</a>
+        <a href="TermsAndConditions.html">Terms & Conditions</a>
+        <a href="ContactUs.html">Contact Us</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+
+/* Body styles */
+body {
+    font-family: Nunito, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Heading styles */
+.heading {
+    text-align: center;
+    color: #3C3F7E;
+}
+
+/* Session container styles */
+.session-container {
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* Session heading styles */
+.session-heading {
+    color: #6c63ff;
+    margin-bottom: 10px;
+}
+
+/* Session box styles */
+.session-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+/* Session content styles */
+.session-content {
+    display: flex;
+    align-items: center;
+}
+
+/* Student image styles */
+.student-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+/* Session details styles */
+.session-details {
+    flex: 1;
+}
+
+/* Session info styles */
+.session-info {
+    margin: 5px 0;
+    color: #3C3F7E;
+}
