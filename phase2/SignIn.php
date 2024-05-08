@@ -1,3 +1,53 @@
+<?php
+session_start();
+// Redirect if already logged in
+if (isset($_SESSION['user'])) {
+    header("Location: homePage.php");
+    exit;
+}
+
+$errorMessage = '';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $servername = "localhost";
+    $username = "root";
+    $dbpassword = "";
+    $dbname = "flungo";
+
+    $conn = new mysqli($servername, $username, $dbpassword, $dbname);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $sql = "SELECT email, password FROM users WHERE email = ?";
+    $stmt = $conn->prepare($sql);
+    if ($stmt) {
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            if ($password === $row['password']) { //  password comparison
+                $_SESSION['user'] = $email;
+                header("Location: homePage.php");
+                exit;
+            } else {
+                $errorMessage = 'Invalid username or password.';
+            }
+        } else {
+            $errorMessage = 'No user found with that email address.';
+        }
+        $stmt->close();
+    } else {
+        $errorMessage = 'Database query failed: ' . $conn->error;
+    }
+    $conn->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,57 +57,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
 <div class="topofpage">
     <img src="logo.PNG" alt="Fluingo Website Logo" class="logo">
 </div>
 
 <div class="cont">
     <h2 class="signTitle">Sign in</h2>
-    <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
-    $password = $_POST['password']; 
-
-  
-    $servername = "localhost";
-    $username = "root"; 
-    $dbpassword = ""; 
-    $dbname = "flungo"; 
-
-
-    $conn = new mysqli($servername, $username, $dbpassword, $dbname);
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    $sql = "SELECT password FROM users WHERE email = ?";
-    $stmt = $conn->prepare($sql);
-    if ($stmt) {
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            // Compare plain text passwords directly
-            if ($password === $row['password']) {
-                // Password is correct, redirect or start session
-                echo '<p>Login successful!</p>';
-                // Redirect to another page or set session variables here
-            } else {
-                echo '<p>Invalid username or password.</p>';
-            }
-        } else {
-            echo '<p>No user found with that email address.</p>';
-        }
-        $stmt->close();
-    } else {
-        echo '<p>Database query failed: ' . $conn->error . '</p>';
-    }
-    $conn->close();
-}
-?>
-
+    <?php if ($errorMessage): ?>
+        <div style="color: red; text-align: center; margin-bottom: 20px;">
+            <?= htmlspecialchars($errorMessage) ?>
+        </div>
+    <?php endif; ?>
     <div class="content-container">
         <div class="contentedit">
             <form method="post">
@@ -85,5 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <a href="TermsAndConditions.html">Terms & Conditions</a>
     <a href="ContactUs.html">Contact Us</a>
 </div>
+
 </body>
 </html>
+
